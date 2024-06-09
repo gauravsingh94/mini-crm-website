@@ -1,8 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
+import customerRoutes from "./routes/customer";
+import orderRoutes from "./routes/order";
 
 const app = express();
 app.use(express.json());
+
+app.use("/customer", customerRoutes);
+app.use("/order", orderRoutes);
 
 const connectDB = async () => {
   try {
