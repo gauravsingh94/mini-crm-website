@@ -10,7 +10,7 @@ export interface AudienceType extends Document {
 const AudienceSchema = new Schema<AudienceType>({
   name: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
-  customer: [{ type: Schema.Types.ObjectId }],
+  customer: [{ type: Schema.Types.ObjectId, ref: "Customer" }],
   size: { type: Number, required: true, default: 0 },
 });
 

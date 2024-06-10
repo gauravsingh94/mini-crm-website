@@ -28,7 +28,7 @@ router.get("/:customerId", async (req: Request, res: Response) => {
       res.json(orders);
     }
   } catch (error) {
-    console.error("Error while creating order", error);
+    console.error("Error while getting order", error);
     res.status(500).send({ error: "Not able to get the order." });
   }
 });
