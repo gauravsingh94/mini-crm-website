@@ -29,32 +29,31 @@ export const CreateAudienceForm: React.FC<AudiencePageProps> = (props) => {
       })
       .then((data) => {
         setCustomers(data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-
-    const data = {
-      name: AudienceName,
-      customer: customers,
-      size: customers.length,
-    };
-
-    fetch("http://localhost:3000/audience/new", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        navigate(data._id);
+        const newData = {
+          name: AudienceName,
+          customer: data, 
+          size: data.length, 
+        };
+  
+        fetch("http://localhost:3000/audience/new", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newData),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            navigate(data._id);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       })
       .catch((error) => {
         console.error("Error:", error);

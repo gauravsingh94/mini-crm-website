@@ -1,10 +1,19 @@
 import React from "react";
 
+interface Customer {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  totalSpends: number;
+  visitCount: number;
+}
+
 interface MessageLog {
-  id: number;
-  serialNumber: number;
+  _id: number;
+  audienceId: string;
+  customerId: Customer;
   message: string;
-  customerName: string;
   status: string;
 }
 
@@ -25,15 +34,17 @@ const MessageLogTable: React.FC<Props> = ({ messageLogs }) => {
           </tr>
         </thead>
         <tbody>
-          {messageLogs.map((log) => (
-            <tr key={log.id}>
-              <td className="border px-4 py-2 text-center">{log.serialNumber}</td>
+          {messageLogs.map((log, index) => (
+            <tr key={index}>
+              <td className="border px-4 py-2 text-center">{index + 1}</td>
               <td className="border px-4 py-2 text-center">{log.message}</td>
-              <td className="border px-4 py-2 text-center">{log.customerName}</td>
+              <td className="border px-4 py-2 text-center">
+                {log.customerId.name}
+              </td>
               <td className="border px-4 py-2 text-center">
                 <span
                   className={
-                    log.status === "send"
+                    log.status === "Sent"
                       ? "text-green-600 font-bold glow"
                       : "text-red-600 font-bold glow"
                   }

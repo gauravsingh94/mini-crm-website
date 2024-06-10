@@ -1,41 +1,32 @@
+import { useParams } from "react-router-dom";
 import MessageLogTable from "../components/LogsTable";
+import { useEffect, useState } from "react";
 
 const MessageLogsPage = () => {
-    const messageLogs = [
-        {
-          id: 1,
-          message: "Hey Ramesh, 10% off!",
-          customerName: "Ramesh Babu",
-          serialNumber: 1,
-          status: "send",
-        },
-        {
-          id: 1,
-          message: "Hey Ramesh, 10% off!",
-          customerName: "Ramesh Babu",
-          serialNumber: 1,
-          status: "send",
-        },
-        {
-          id: 1,
-          message: "Hey Ramesh, 10% off!",
-          customerName: "Ramesh Babu",
-          serialNumber: 1,
-          status: "send",
-        },
-        {
-          id: 1,
-          message: "Hey Ramesh, 10% off!",
-          customerName: "Ramesh Babu",
-          serialNumber: 1,
-          status: "send",
-        }, 
-      ];
-      return (
-        <div className="container mx-auto">
-          <MessageLogTable messageLogs={messageLogs} />
-        </div>
-      );
-}
+  const { audienceId } = useParams();
+  const [messageLogs, setMessageLogs] = useState([]);
+  console.log(messageLogs)
+  useEffect(() => {
+    fetch(`http://localhost:3000/logs/${audienceId}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setMessageLogs(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
 
-export default MessageLogsPage
+  return (
+    <div className="container mx-auto">
+      <MessageLogTable messageLogs={messageLogs} />
+    </div>
+  );
+};
+
+export default MessageLogsPage;

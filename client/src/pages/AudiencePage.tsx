@@ -23,7 +23,7 @@ const AudiencePage = () => {
         console.error("Error fetching audience data:", error);
       });
   }, []);
-  
+
   const handleCreateAudience = () => {
     setShowForm(true);
   };
@@ -45,6 +45,7 @@ const AudiencePage = () => {
         {audiences.map((audience: AudienceType) => (
           <AudienceCard
             key={audience._id}
+            id={audience._id}
             audienceName={audience.name}
             createdAt={new Date(audience.createdAt).toLocaleDateString()}
             size={audience.size}
