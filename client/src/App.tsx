@@ -1,8 +1,8 @@
-import AudiencePage from "./pages/AudiencePage";
+import AudienceDetailPage from "./pages/AudienceDetailPage";
 const App = () => {
   return (
     <div className="container mx-auto">
-      <AudiencePage />
+      <AudienceDetailPage/>
     </div>
   );
 };
