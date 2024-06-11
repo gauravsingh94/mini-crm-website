@@ -23,6 +23,12 @@ mini-crm-website/
 └── README.md          # Project documentation
 ```
 
+### Schema 
+
+<img width="911" alt="image" src="https://github.com/gauravsingh94/mini-crm-website/assets/99260988/d6747bf0-d704-4f8b-a675-ac4e816c68be">
+
+
+
 ## How to Setup Locally
 
 ### Clone the Repository
