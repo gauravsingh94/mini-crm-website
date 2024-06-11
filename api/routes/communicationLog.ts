@@ -5,7 +5,7 @@ const router = Router();
 router.get("/:audienceId", async (req: Request, res: Response) => {
   const audienceId = req.params.audienceId;
   try {
-    const logs = await CommunicationLog.find({audienceId:audienceId});
+    const logs = await CommunicationLog.find({audienceId:audienceId}).populate('customerId');
     if (logs) {
       res.json(logs);
     }

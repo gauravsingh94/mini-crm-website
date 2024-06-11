@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import customerRoutes from "./routes/customer";
 import orderRoutes from "./routes/order";
 import audienceRoutes from "./routes/audience";
@@ -8,6 +9,7 @@ import communicationLogRoute from "./routes/communicationLog";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.use("/customer", customerRoutes);
 app.use("/order", orderRoutes);
