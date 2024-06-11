@@ -28,7 +28,7 @@ mini-crm-website/
 ### Clone the Repository
 
 ```bash
-[git clone https://github.com/your-username/mini-crm-website.git](https://github.com/gauravsingh94/mini-crm-website.git)
+https://github.com/gauravsingh94/mini-crm-website.git
 cd mini-crm-website
 ```
 
