@@ -6,10 +6,18 @@ import orderRoutes from "./routes/order";
 import audienceRoutes from "./routes/audience";
 import sendMessageRoute from "./routes/sendMessage";
 import communicationLogRoute from "./routes/communicationLog";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: [`${process.env.CLIENT_URL}`],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
 app.use("/customer", customerRoutes);
 app.use("/order", orderRoutes);
@@ -19,7 +27,7 @@ app.use("/logs", communicationLogRoute);
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/test");
+    await mongoose.connect(`${process.env.MONGODB_URL}`);
     console.log("Successfully connected to the database.");
   } catch (err) {
     console.log(err);
