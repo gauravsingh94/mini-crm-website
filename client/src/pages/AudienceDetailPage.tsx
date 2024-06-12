@@ -19,7 +19,7 @@ const AudienceDetailPage = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/audience/${audienceId}`
+          `${import.meta.env.VITE_BACKEND_URL}/audience/${audienceId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch audience data");

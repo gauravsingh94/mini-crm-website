@@ -13,13 +13,16 @@ const SendMessageForm: React.FC<PropsType> = (props) => {
       message,
     };
 
-    fetch(`http://localhost:3000/send/message/${props.audienceId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(messageData),
-    })
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/send/message/${props.audienceId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(messageData),
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -29,6 +32,7 @@ const SendMessageForm: React.FC<PropsType> = (props) => {
       .then((data) => {
         console.log("Message sent successfully:", data);
         alert("Message sent successfully:");
+        props.handleFormClose();
       })
       .catch((error) => {
         console.error("Error:", error);

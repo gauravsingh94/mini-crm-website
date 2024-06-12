@@ -19,7 +19,7 @@ export const CreateAudienceForm: React.FC<AudiencePageProps> = (props) => {
 
   const handleSubmit = () => {
     fetch(
-      `http://localhost:3000/customer/filter?minTotalSpends=${minTotalSpends}&maxVisits=${maxVisits}&maxTotalSpends=${maxTotalSpends}&notVisitedInLastMonths=${notVisitedInLastMonths}`
+      `${import.meta.env.VITE_BACKEND_URL}/customer/filter?minTotalSpends=${minTotalSpends}&maxVisits=${maxVisits}&maxTotalSpends=${maxTotalSpends}&notVisitedInLastMonths=${notVisitedInLastMonths}`
     )
       .then((response) => {
         if (!response.ok) {
@@ -35,7 +35,7 @@ export const CreateAudienceForm: React.FC<AudiencePageProps> = (props) => {
           size: data.length, 
         };
   
-        fetch("http://localhost:3000/audience/new", {
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/audience/new`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

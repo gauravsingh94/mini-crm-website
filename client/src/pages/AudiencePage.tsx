@@ -14,7 +14,7 @@ const AudiencePage = () => {
   const [audiences, setAudiences] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/audience/all")
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/audience/all`)
       .then((response) => response.json())
       .then((data) => {
         setAudiences(data);

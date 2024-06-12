@@ -7,7 +7,7 @@ const MessageLogsPage = () => {
   const [messageLogs, setMessageLogs] = useState([]);
   console.log(messageLogs)
   useEffect(() => {
-    fetch(`http://localhost:3000/logs/${audienceId}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/logs/${audienceId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
