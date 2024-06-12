@@ -38,8 +38,10 @@ const AudienceDetailPage = () => {
 
   return (
     <div>
-      <div className="text-center font-[10px]">{audienceName}</div>
-      <div className="text-center font-[5px]">{size}</div>
+      <div className="text-4xl font-bold text-center text-gray-800 my-6">
+      {audienceName}
+    </div>
+      <div className="text-center text-2xl font-[5px]">Size: {size}</div>
       <div className="flex justify-between items-center">
         <div>
           <p>See logs of past messages.</p>
