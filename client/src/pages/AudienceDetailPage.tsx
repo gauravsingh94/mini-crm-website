@@ -3,9 +3,19 @@ import CustomerTable from "../components/CustomerCard";
 import SendMessageForm from "../components/SendMessageForm";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-const AudienceDetailPage = () => {
+  
+const AudienceDetailPage = ({
+  isAuthenticated,
+}: {
+  isAuthenticated: boolean;
+}) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login-register");
+    }
+  });
   const [showPopup, setShowPopup] = useState(false);
 
   const handleFormClose = () => {
@@ -39,8 +49,8 @@ const AudienceDetailPage = () => {
   return (
     <div>
       <div className="text-4xl font-bold text-center text-gray-800 my-6">
-      {audienceName}
-    </div>
+        {audienceName}
+      </div>
       <div className="text-center text-2xl font-[5px]">Size: {size}</div>
       <div className="flex justify-between items-center">
         <div>

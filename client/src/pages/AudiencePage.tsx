@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { CreateAudienceForm } from "../components/CreateAudienceForm";
 import AudienceCard from "../components/AudienceCard";
+import { useNavigate } from "react-router-dom";
 
 interface AudienceType {
   _id: string;
@@ -9,7 +10,15 @@ interface AudienceType {
   size: number;
 }
 
-const AudiencePage = () => {
+const AudiencePage = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login-register");
+    }
+  });
+
   const [showForm, setShowForm] = useState(false);
   const [audiences, setAudiences] = useState([]);
 

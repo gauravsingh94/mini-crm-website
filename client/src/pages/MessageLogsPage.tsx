@@ -1,11 +1,19 @@
 import { useParams } from "react-router-dom";
 import MessageLogTable from "../components/LogsTable";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+const MessageLogsPage = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
+  const navigate = useNavigate();
 
-const MessageLogsPage = () => {
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login-register");
+    }
+  });
+
   const { audienceId } = useParams();
   const [messageLogs, setMessageLogs] = useState([]);
-  console.log(messageLogs)
+  console.log(messageLogs);
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/logs/${audienceId}`)
       .then((response) => {

@@ -17,7 +17,9 @@ const CustomerTable: React.FC<PropsType> = ({ customers }) => {
   return (
     <div className="overflow-x-auto">
       {customers.length === 0 ? (
-        <p className="text-center text-gray-500">There is no customer in this range.</p>
+        <p className="text-center text-gray-500">
+          There is no customer in this range.
+        </p>
       ) : (
         <div className="shadow overflow-hidden border-b border-yellow-300 sm:rounded-lg">
           <table className="min-w-full divide-y divide-yellow-200">
@@ -59,10 +61,18 @@ const CustomerTable: React.FC<PropsType> = ({ customers }) => {
               {customers.map((customer: Customer, index: number) => (
                 <tr key={index}>
                   <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{customer.name}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{customer.email}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{customer.totalSpends}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{customer.lastVisit}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {customer.name}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {customer.email}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {customer.totalSpends}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {new Date(customer.lastVisit).toLocaleDateString()}
+                  </td>
                 </tr>
               ))}
             </tbody>
